@@ -1,0 +1,25 @@
+{
+  "name": "playwrignt-example-test-project",
+  "version": "1.0.0",
+  "description": "This project was created for demonstration purposes to practice and maintain test automation skills, ensuring they are up to date with recent changes in the Playwright framework.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mishell133/playwrignt-example-test-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mishell133/playwrignt-example-test-project/issues"
+  },
+  "homepage": "https://github.com/Mishell133/playwrignt-example-test-project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.10"
+  },
+  "dependencies": {
+    "typescript": "^5.8.2"
+  }
+}
