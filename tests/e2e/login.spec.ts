@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 //import {LoginPage} from '../../page-objects/loginPage'
 import { PageManager } from '../../page-objects/pageManager';
-import { faker } from '@faker-js/faker';
+import { faker, tr } from '@faker-js/faker';
 
 test.describe('login tests', () => {
     test.beforeEach(async ({page}) => {
       await page.goto('https://www.automationexercise.com');
       let element = page.locator('.fc-button-label', {hasText:'Consent'})
-      if(await element.isVisible)
+      if(!process.env.CI)
       {
         await element.click()
       }
