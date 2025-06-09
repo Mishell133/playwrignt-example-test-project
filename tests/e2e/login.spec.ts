@@ -1,55 +1,65 @@
 import { test, expect } from '@playwright/test';
 //import {LoginPage} from '../../page-objects/loginPage'
 import { PageManager } from '../../page-objects/pageManager';
+import { faker } from '@faker-js/faker';
 
 test.describe('login tests', () => {
     test.beforeEach(async ({page}) => {
-    await page.goto('https://www.saucedemo.com/');
+      await page.goto('https://www.automationexercise.com');
+      let element = page.locator('.fc-button-label', {hasText:'Consent'})
+      if(await element.isVisible)
+      {
+        await element.click()
+      }
   });
 
   test.afterEach(async ({page}) => {
     await page.close();
   });
 
-  test('standart user login', {
-    tag: '@smoke'
+  test('test case 1: register user', {
   }, async ({ page }) => {
 
-    const pm = new PageManager(page)
-
-    await pm.loginPage().Login('standard_user', 'secret_sauce');
     
-    await expect(page.getByTestId('inventory-container')).toBeVisible({timeout: 5000});
-  });
 
-  test('locked_out_user login', {
-    tag: '@smoke'
-  }, async ({ page }) => {
+    await expect(page.locator('.logo')).toBeVisible();
 
-    const pm = new PageManager(page)
+    await page.locator(`[href='/login']`).click();
 
-    await pm.loginPage().Login('locked_out_user', 'secret_sauce');
-    
-    await expect(page.getByTestId('error')).toBeVisible();
-  }); 
+    await expect(page.locator('.signup-form', {hasText: 'New User Signup!'})).toBeVisible()
 
-  test('problem_user login', {
-    tag: '@smoke'
-  }, async ({ page }) => {
+    await page.getByTestId('signup-name').fill(faker.internet.username())
+    await page.getByTestId('signup-email').fill(faker.internet.email())
+    await page.getByTestId('signup-button').click()
 
-    const pm = new PageManager(page)
-    
-    //const loginPage = new LoginPage(page);
-    await pm.loginPage().Login('problem_user', 'secret_sauce');
-    const elements = await page.locator('img.inventory_item_img');
+    await expect(page.locator('.login-form', {hasText: 'Enter Account Information'})).toBeVisible()
 
-    await expect.soft(elements).toHaveCount(6);
-    //check all the products have the same picture for the 'problem' user
-    for (const el of await elements.all())
-    {
-      await expect( await el.getAttribute('src')).toContain('/static/media/sl-404.168b1cce.jpg');
-    }
-    
+    await page.locator('.radio-inline',{hasText: 'Mr.'}).locator('.radio').check()
+
+    await page.getByTestId('name').fill(faker.internet.username())  //TODO: Use faker
+
+    await page.getByTestId('password').fill(faker.internet.password())
+
+    await page.getByTestId('first_name').fill(faker.person.firstName())
+
+    await page.getByTestId('last_name').fill(faker.person.lastName())
+
+    await page.getByTestId('address').fill(faker.location.street())
+
+    await page.getByLabel('country').selectOption('United States');
+
+    await page.getByTestId('state').fill(faker.location.state())
+    await page.getByTestId('city').fill(faker.location.city())
+    await page.getByTestId('zipcode').fill(faker.location.zipCode())
+
+    await page.getByTestId('mobile_number').fill(faker.phone.number({ style: 'national' }))
+
+    await page.getByTestId('create-account').click()
+    await page.getByTestId('continue-button').click()
+
+    await page.locator(`[href='/delete_account']`).click()
+
+    await expect (page.getByTestId('account-deleted')).toBeVisible()
   });
 });
 

@@ -2,70 +2,52 @@
 
 This project was created for demonstration purposes to practice and maintain test automation skills, ensuring they are up to date with recent changes in the Playwright framework.
 
-Test site: https://www.saucedemo.com/
+Test site: https://www.automationexercise.com/
 
 Scenarios to cover:
 
-1. Login Functionality Testing (Various Users):
+E2E:
 
-1.1. Successful login with standard_user.
-1.2. Successful login with locked_out_user (verifying lockout).
-1.3. Successful login with problem_user (verifying image display).
-1.4. Successful login with performance_glitch_user (verifying performance).
-1.5. Failed login with a non-existent user.
-1.6. Failed login with an incorrect password for standard_user.
-1.7. Failed login with empty username and password fields.
-1.8. Verify username case sensitivity.
-1.9. Verify password case sensitivity.
-1.10. Verify error messages for various failed login scenarios.
-2. Shopping Cart Testing:
+Test Case 1: Register User
+Test Case 2: Login User with correct email and password
+Test Case 3: Login User with incorrect email and password
+Test Case 4: Logout User
+Test Case 5: Register User with existing email
+Test Case 6: Contact Us Form
+Test Case 7: Verify Test Cases Page
+Test Case 8: Verify All Products and product detail page
+Test Case 9: Search Product
+Test Case 10: Verify Subscription in home page
+Test Case 11: Verify Subscription in Cart page
+Test Case 12: Add Products in Cart
+Test Case 13: Verify Product quantity in Cart
+Test Case 14: Place Order: Register while Checkout
+Test Case 15: Place Order: Register before Checkout
+Test Case 16: Place Order: Login before Checkout
+Test Case 17: Remove Products From Cart
+Test Case 18: View Category Products
+Test Case 19: View & Cart Brand Products
+Test Case 20: Search Products and Verify Cart After Login
+Test Case 21: Add review on product
+Test Case 22: Add to cart from Recommended items
+Test Case 23: Verify address details in checkout page
+Test Case 24: Download Invoice after purchase order
+Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality
+Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functionality
 
-2.1. Add a single item to the cart.
-2.2. Add multiple items to the cart.
-2.3. Remove an item from the cart.
-2.4. Change the quantity of items in the cart (if applicable).
-2.5. Verify the cart is empty after removing all items.
-2.6. Verify items persist in the cart after a page refresh.
-2.7. Verify cart items persist when navigating between pages.
-2.8. Verify the total price of items in the cart.
-2.9. Verify the "Checkout" button is enabled only when items are in the cart.
-2.10. Verify the cart icon updates in real-time when adding/removing items.
-3. Checkout Process Testing:
+API:
 
-3.1. Successful checkout with valid data.
-3.2. Error during checkout with empty fields.
-3.3. Error during checkout with an invalid postal code format.
-3.4. Verify the "Checkout: Overview" page displays correct order information.
-3.5. Verify the "Cancel" button on the "Checkout: Overview" page returns the user to the cart.
-3.6. Verify the "Finish" button completes the checkout process.
-3.7. Verify the "Checkout: Complete!" page displays a success message.
-3.8. Verify the "Back Home" button on the "Checkout: Complete!" page returns the user to the products page.
-3.9. Verify order information is not saved after logging out.
-3.10. Verify that it is impossible to checkout with negative quantities of products.
-4. Product Sorting and Filtering Testing:
-
-4.1. Sort products by price (low to high).
-4.2. Sort products by price (high to low).
-4.3. Sort products alphabetically (A to Z).
-4.4. Sort products alphabetically (Z to A).
-4.5. Verify that sorting persists when navigating between pages.
-4.6. Verify all products are displayed when no filters are applied.
-4.7. Verify only matching products are displayed when filters are applied (if applicable).
-4.8. Verify that filters can be combined (if applicable).
-4.9. Verify that filters can be reset.
-4.10. Verify the number of displayed products matches the selected filters.
-5. Product Information Testing:
-
-5.1. Verify the product name is displayed correctly.
-5.2. Verify the product description is displayed correctly.
-5.3. Verify the product price is displayed correctly.
-5.4. Verify the product image is displayed correctly.
-5.5. Verify the "Back to products" button returns the user to the products page.
-6. Navigation and Link Testing:
-
-6.1. Verify all links on the page function correctly.
-6.2. Verify the company logo returns the user to the homepage.
-6.3. Verify the navigation menu functions correctly (if applicable).
-6.4. Verify social media links function correctly (if applicable).
-
-
+API 1: Get All Products List
+API 2: POST To All Products List
+API 3: Get All Brands List
+API 4: PUT To All Brands List
+API 5: POST To Search Product
+API 6: POST To Search Product without search_product parameter
+API 7: POST To Verify Login with valid details
+API 8: POST To Verify Login without email parameter
+API 9: DELETE To Verify Login
+API 10: POST To Verify Login with invalid details
+API 11: POST To Create/Register User Account
+API 12: DELETE METHOD To Delete User Account
+API 13: PUT METHOD To Update User Account
+API 14: GET user account detail by email
